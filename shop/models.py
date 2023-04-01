@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create catalogue (category)
@@ -13,6 +14,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    # Get product by category
+    def get_absolute_url(self):
+        return reverse("shop:product_list_by_category", args=[self.slug])
 
 
 # Create Product
@@ -35,3 +40,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    # Get product by id & slug
+    def get_absolute_url(self):
+        return reverse("shop:product_detail", args=[self.id, self.slug])
