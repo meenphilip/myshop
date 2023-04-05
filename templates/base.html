@@ -10,9 +10,10 @@
   </head>
   <body>
     <div id="header">
-      <a href="/" class="logo">My Shop</a>
+      <a href="{% url 'shop:product_list' %}" class="logo">My Shop</a>
     </div>
     <div id="subheader">
+       <a href="{% url 'cart:cart_detail' %}" class="logo">My Cart</a>
       <div class="cart">
         {% with total_items=cart|length %} {% if total_items > 0 %} Your cart:
         <a href="{% url 'cart:cart_detail' %}">
