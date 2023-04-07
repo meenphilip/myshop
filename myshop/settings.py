@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,12 +28,23 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Sending emails with Django (via SMTP)
+# EMAIL_ADDR = os.environ.get('EMAIL_USER')
+# EMAIL_PASS = os.environ.get('EMAIL_PASS')
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = EMAIL_ADDR
+# EMAIL_HOST_PASSWORD = EMAIL_PASS
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+# Tell Django to write emails to the console
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # set cart session key
 CART_SESSION_ID = "cart"
 
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
